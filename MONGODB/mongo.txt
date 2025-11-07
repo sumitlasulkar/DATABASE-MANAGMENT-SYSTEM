@@ -1,0 +1,42 @@
+*Relational database   *Mongo database (non relational, NO SQL)
+ database               database
+ table                  collection
+ row                    doument
+ column                 field
+
+Mongo db:
+ NO SQL database
+ can use with any programming language
+ use for non structured quries
+
+when installed in system:
+click on -> create database
+enter name and collection name
+click on -> add document
+now we can dynamically insert data
+
+in mongo db there is database in which collection work as table and document work as row
+creating connection using string
+click on mongo symbol on activity bar
+click on -> connect
+enter string -> mongodb://localhost:27017
+press on -> save and connect
+
+command use to see databases in mongo db
+-> show dbs
+commnd for use database
+-> use dbName
+
+CRUD operations
+C - create, create anything like document
+R - read, access any thing 
+U - update, update any thing
+D - Delete, delete anything
+
+mongo db provides unique ID to document
+All commands should run in mongo db shell
+
+
+Mongodb Atlas
+// cloud system of mongo db
+// efficient than original mongo db

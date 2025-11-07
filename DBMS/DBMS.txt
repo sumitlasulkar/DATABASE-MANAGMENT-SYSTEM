@@ -1,0 +1,311 @@
+🔹 Database
+    collection of data stored in format that can be easily accessed
+    DBMS : software application used to manage our database
+
+
+🔹 SQL
+    Structered Query Language
+    used to interact with relational databases
+    used to perform CRUD operations
+    not a case sensitive language
+
+
+🔹 SQL Characteristics
+    Declarative Language – You specify what to do, not how to do it.
+    Standardized – Follows ANSI/ISO standards, works across databases.
+    Data-Oriented – Designed specifically for relational database operations.
+    Set-Oriented – Operates on groups of rows at once, not single records.
+    Case-Insensitive – Keywords like SELECT or select mean the same.
+    Supports Multiple Views – Allows creation of virtual tables (views).
+    Covers CRUD – Provides INSERT, SELECT, UPDATE, DELETE.
+    Portable – Works on different DBMS platforms with minor changes.
+    Supports Constraints & Security – Ensures data integrity and permissions.
+    Interactive & Embedded – Can be run directly or within programming languages.
+
+
+🔹 Advantages of SQL
+    Simple to Learn – SQL uses easy English-like commands.
+    Efficient Querying – Quickly retrieves large amounts of data.
+    Standardized Language – ANSI/ISO standard works across many DBMS.
+    Multiple Data Views – Provides flexibility with views for users.
+    Data Integrity – Constraints ensure accuracy and consistency.
+    Security Control – Permissions (GRANT, REVOKE) protect data access.
+    Portability – Runs on different systems with minor modifications.
+    Scalability – Handles small to very large databases efficiently.
+    Support for Transactions – Ensures reliability with COMMIT and ROLLBACK.
+    Interactive & Embedded – Can be used directly or inside applications.
+
+
+🔹 Features of SQL
+    Data Definition Language (DDL) – Defines database structure with CREATE, ALTER, DROP.
+    Data Manipulation Language (DML) – Manages data using INSERT, UPDATE, DELETE.
+    Data Query Language (DQL) – Retrieves data using SELECT.
+    Data Control Language (DCL) – Manages access with GRANT and REVOKE.
+    Transaction Control Language (TCL) – Maintains transactions with COMMIT, ROLLBACK, SAVEPOINT.
+    Portability – SQL works across different database systems.
+    High Security – Provides role-based access and permissions.
+    Integrity Constraints – Ensures accuracy with PRIMARY KEY, FOREIGN KEY, NOT NULL, etc.
+    Views Support – Creates virtual tables for simplified and secure access.
+    Set-Oriented Processing – Handles multiple records at once.
+
+
+🔹 SQL Data Types
+    🔹 Numeric Data Types
+        *TINYINT → Very small integer | -128 to 127 (SIGNED), 0 to 255 (UNSIGNED)
+        *SMALLINT → Small integer | -32,768 to 32,767 (SIGNED), 0 to 65,535 (UNSIGNED)
+        *MEDIUMINT → Medium integer | -8,388,608 to 8,388,607 (SIGNED), 0 to 16,777,215 (UNSIGNED)
+        *INT / INTEGER → Standard integer | -2,147,483,648 to 2,147,483,647 (SIGNED), 0 to 4,294,967,295    (UNSIGNED)
+        *BIGINT → Very large integer | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 (SIGNED), 0 to 18,446,744,073,709,551,615 (UNSIGNED)
+        *DECIMAL(p,s) / NUMERIC(p,s) → Fixed-point exact number | Depends on precision (p) and scale (s)
+        *FLOAT → Approximate decimal (single precision) | ~±3.402823466E+38
+        *DOUBLE / REAL → Approximate decimal (double precision) | ~±1.7976931348623157E+308
+    🔹 String / Character Data Types
+        *CHAR(n) → Fixed-length string | 0–255 characters
+        *VARCHAR(n) → Variable-length string | 0–65,535 characters (depends on row size)
+        *TEXT → Large text storage | Up to 65,535 characters
+        *MEDIUMTEXT → Medium-length text | Up to 16,777,215 characters
+        *LONGTEXT → Very large text | Up to 4,294,967,295 characters
+    🔹 Date and Time Data Types
+        *DATE → Stores date | '1000-01-01' to '9999-12-31'
+        *TIME → Stores time | '-838:59:59' to '838:59:59'
+        *DATETIME → Stores date & time | '1000-01-01 00:00:00' to '9999-12-31 23:59:59'
+        *TIMESTAMP → Date & time with auto-update | '1970-01-01 00:00:01 UTC' to '2038-01-19 03:14:07 UTC'
+        *YEAR(4) → Stores year | 1901 to 2155
+    🔹 Other Data Types
+        *BOOLEAN / BOOL → Logical values | TRUE (1) or FALSE (0)
+        *BLOB → Binary large objects (images, files, videos) | Size depends on type (TINYBLOB: 255B, BLOB: 65KB, MEDIUMBLOB: 16MB, LONGBLOB: 4GB)
+
+
+🔹 Types of SQL Literals
+    *Numeric Literal → Represents constant numbers | Example: 25, -100, 3.14
+    *String / Character Literal → Represents fixed text enclosed in single quotes | Example: 'Hello', 'India'
+    *Date Literal → Represents a constant date in YYYY-MM-DD format | Example: '2025-08-17'
+    *Time Literal → Represents a constant time in HH:MM:SS format | Example: '12:30:45'
+    *Boolean Literal → Represents logical constants | Example: TRUE, FALSE
+    *NULL Literal → Represents missing or unknown value | Example: NULL
+
+
+🔹  SQL Commands
+        SQL Commands are instructions used to interact with the database — to define, manipulate, control, and query data.
+
+        🔹 Types of SQL Commands
+
+            *DDL (Data Definition Language) → Defines database structure
+             Commands: CREATE, ALTER, DROP, TRUNCATE, RENAME
+            *DML (Data Manipulation Language) → Manipulates data in tables
+            Commands: INSERT, UPDATE, DELETE
+            *DQL (Data Query Language) → Retrieves data from database
+            Commands: SELECT
+            *DCL (Data Control Language) → Controls access and permissions
+            Commands: GRANT, REVOKE
+            *TCL (Transaction Control Language) → Manages transactions
+            Commands: COMMIT, ROLLBACK, SAVEPOINT, SET TRANSACTION
+
+
+🔹 SQL Operators
+🔹 SQL Operators
+    1. Arithmetic Operators – For mathematical calculations
+        + → Addition
+        - → Subtraction
+        * → Multiplication
+        / → Division
+        % → Modulus (remainder)
+    2. Comparison / Relational Operators – For comparing values
+        = → Equal to
+        != or <> → Not equal to
+        > → Greater than
+        < → Less than
+        >= → Greater than or equal to
+        <= → Less than or equal to
+    3. Logical Operators – For combining conditions
+        AND → True if all conditions are true
+        OR → True if any condition is true
+        NOT → Reverses the result
+    4. Special Operators – For advanced filtering
+        BETWEEN → Checks if value is within a range
+        IN → Checks if value matches a list of values
+        LIKE → Used for pattern matching
+        IS NULL → Checks for NULL values
+
+
+🔹" Constraints in SQL : used to specify rules for data in a table "
+🔹 Column-level Constraints
+Applied directly with the column definition.
+Examples: NOT NULL, UNIQUE, PRIMARY KEY, CHECK, DEFAULT.
+🔹 Table-level Constraints
+Applied separately after all columns are defined.
+Examples: PRIMARY KEY, FOREIGN KEY, CHECK, UNIQUE.
+
+    NOT NULL → Ensures a column cannot have NULL values.
+    UNIQUE → Ensures all values in a column are different.
+    PRIMARY KEY → Uniquely identifies each row (NOT NULL + UNIQUE).
+    FOREIGN KEY → Links a column to the primary key of another table.
+    CHECK → Ensures that values satisfy a specific condition.
+    DEFAULT → Provides a default value for a column when none is specified.
+
+🔹 Modifying tables : done using alter keys
+
+🔹 Clause in SQL 
+ A clause is a part of an SQL query that adds a condition or modifies how data is selected, grouped, or ordered.
+    WHERE → Filters rows based on a condition.
+    HAVING → Filters groups after aggregation.
+    GROUP BY → Groups rows based on one or more columns.
+    ORDER BY → Sorts the result set in ascending or descending order.
+    FROM → Specifies the table to retrieve data from.
+    SELECT → Specifies the columns to be retrieved.
+
+
+🔹 View 
+ A virtual table in SQL created using a query that shows data from one or more tables without storing it separately.
+    🔹 Features
+    Stores only the query, not the actual data.
+    Provides security by restricting access to specific columns/rows.
+    Simplifies complex queries.
+    Can be updated (with some restrictions).
+
+Simple View → Created from a single table without functions or group clauses.
+Complex View → Created from multiple tables using joins, functions, or group clauses.
+Materialized View → Stores the actual data physically and refreshes periodically for performance.
+Updatable View → A view in which INSERT, UPDATE, and DELETE operations can be performed 
+Read-only View → A view where data modification is not allowed 
+
+✅ Advantages of Views
+    Simplicity → Hides complex queries behind a single view.
+    Security → Restricts user access to specific rows/columns.
+    Reusability → Can be reused in multiple queries.
+    Data Abstraction → Provides a logical representation without exposing the base table.
+    Consistency → Ensures users see the same, uniform data output.
+
+❌ Disadvantages of Views
+    Performance Overhead → Complex views can slow down query execution.
+    Read-only Limitations → Many views cannot be updated (joins, aggregates, etc.).
+    Dependency Issues → Dropping/changing base tables may break views.
+    Storage (Materialized Views) → Requires extra space to store data.
+    Restricted Operations → Some DML operations (INSERT, UPDATE, DELETE) are not allowed on certain views.
+
+
+🔹 Index 
+An Index in SQL is a database object used to speed up the retrieval of rows from a table, just like an index in a book helps you find information quickly.
+
+    🔹 Types of Indexes
+    Primary Index → Created automatically on the Primary Key column.
+    Unique Index → Ensures all values in a column are unique.
+    Clustered Index → Physically arranges the data in the table (only one per table).
+    Non-Clustered Index → Creates a separate structure pointing to the data (can be many per table).
+    Composite Index → Index on two or more columns together.
+    Implicit Index → Automatically created when constraints like PRIMARY KEY or UNIQUE are applied.
+
+    🔹 Advantages
+    Faster data retrieval (improves SELECT performance).
+    Useful for searching, sorting, and filtering large datasets.
+    Helps enforce constraints like uniqueness.
+
+    🔹 Disadvantages
+    Takes extra space in the database.
+    Slows down INSERT, UPDATE, and DELETE (because index must be updated too).
+    Needs maintenance.
+
+
+🔹 Sequence
+A Sequence in SQL is a database object that generates a sequence of numeric values automatically (often used for auto-incrementing primary keys).
+
+    🔹 Key Points
+    Generates unique numbers in order.
+    Can be incremented up or down.
+    Has options for start value, increment, min, max, cycle.
+    Often used for IDs, invoice numbers, serial numbers.
+
+    🔹 Advantages
+        Automatically generates unique numbers.
+        Removes need for manual number entry.
+        Ensures no duplicates for primary keys.
+
+
+
+🔹 Set operations
+  Set operations in SQL are used to combine the results of two or more SELECT queries.
+    🔹 Set Operations in SQL 
+    UNION → Combines results of two queries, removes duplicates.
+    UNION ALL → Combines results of two queries, keeps duplicates.
+    INTERSECT → Returns only common rows between two queries.
+    EXCEPT / MINUS → Returns rows from first query that are not in second.
+    EXCEPT ALL → Returns rows from first query not in second but keeps duplicates.
+    🔹 Rules for Set Operations
+        Same Number of Columns → Both SELECT queries must return the same number of columns.
+        Same Data Types → Data types of corresponding columns must be compatible (e.g., INT with INT, VARCHAR with VARCHAR).
+        Order of Columns → Columns are compared based on their order, not names.
+        Column Names → Final result set takes column names from the first SELECT query.
+        Sorting → ORDER BY can be used only once at the end of the combined query (not in individual SELECTs).
+        Duplicates →
+            UNION and INTERSECT → remove duplicates.
+            UNION ALL and EXCEPT ALL → keep duplicates.
+        NULL Handling → NULL is treated as a valid value during set operations (e.g., NULL = NULL for comparison).
+
+
+🔹 Join
+Join in SQL → Combines rows from two or more tables based on a related column.
+    🔹 Types of Joins
+    INNER JOIN → Returns only matching rows from both tables.
+    LEFT JOIN (LEFT OUTER JOIN) → Returns all rows from the left table + matching rows from the right.
+    RIGHT JOIN (RIGHT OUTER JOIN) → Returns all rows from the right table + matching rows from the left.
+    FULL JOIN (FULL OUTER JOIN) → Returns all rows when there is a match in either table.
+    CROSS JOIN → Returns Cartesian product (every row of table1 × every row of table2).
+    SELF JOIN → A table joins with itself.
+    NATURAL JOIN → Automatically joins based on columns with the same name in both tables.
+    EQUI JOIN → A join condition using = operator.
+    NON-EQUI JOIN → A join condition using >, <, BETWEEN, etc.
+
+🔹 1. Join Condition
+Definition: The condition that specifies how two tables are related when performing a join.
+Usually based on matching columns like primary key → foreign key.
+Determines which rows are combined from the tables.
+🔹 2. Join Predicate
+Definition: A logical expression used to filter rows in a join.
+Can include comparison operators (=, <, >, <=, >=, <>) and logical operators (AND, OR).
+Helps limit the result set after applying the join condition.
+    "EQUI JOIN" → A join using the = operator between columns of two tables.
+    "NON-EQUI JOIN" → A join using other comparison operators (<, >, <=, >=, <>) instead of =.
+    "MULTIPLE JOIN CONDITIONS" → Join with more than one condition using AND / OR in the ON clause.
+
+
+🔹 Set Membership
+Set Membership refers to checking whether a value exists in a set of values or satisfies a condition within a set returned by a subquery.
+
+        🔹 Types of Set Membership
+        IN → Checks if a value matches any value in a list or subquery.
+        NOT IN → Checks if a value does not match any value in a list or subquery.
+        ANY / SOME → Checks if a value matches any value returned by a subquery (can use comparison operators).
+        ALL → Checks if a value satisfies a condition for all values returned by a subquery.
+
+
+🔹Tuple Variable
+Tuple Variable → An alias given to a table or row in a query to reference it easily, especially in self-joins or complex queries.
+    Helps differentiate multiple instances of the same table.
+    Makes queries shorter and more readable.
+    Tuple variables are aliases for tables or rows.
+    Required in self-joins to distinguish table instances.
+    Can simplify queries with long table names.
+    Improves readability and maintainability of SQL code.
+
+
+🔹 Aggregate Functions : perform calculation on set of values, returns a single value
+    COUNT() : count the values
+    MAX() :give max value
+    MIN(): give min value
+    SUM() : give sum of all values
+    AVG() : give average of all values
+
+    STRING_AGG() → combines strings, requires separator.
+    STDDEV() → measures dispersion from mean, sqrt of variance.
+    VARIANCE() → measures data spread, square of std deviation.
+    Useful in statistical and reporting queries.
+
+🔹 Nested Subquery
+ → A query inside another query (usually inside SELECT, FROM, or WHERE clauses).
+The inner query runs first and its result is used by the outer query.
+Also called subquery or inner query.
+    🔹 Types of Nested Subqueries
+    Single-row subquery → Returns one value.
+    Multiple-row subquery → Returns multiple values.
+    Multiple-column subquery → Returns multiple columns.
+    Correlated subquery → Inner query depends on outer query.

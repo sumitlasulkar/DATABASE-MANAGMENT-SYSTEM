@@ -1,0 +1,182 @@
+PL/SQL
+
+🔹 Definition
+
+PL/SQL (Procedural Language/SQL) → Oracle’s procedural extension of SQL that allows writing programs with logic, loops, conditions, and variables along with SQL.
+Combines SQL + procedural constructs.
+Enables modular programming with blocks, procedures, functions, and packages.
+
+🔹 Features
+Block structure → Code is written in blocks (DECLARE, BEGIN, EXCEPTION, END).
+Procedural constructs → Supports IF, LOOP, WHILE, etc.
+Variables & constants → Can store temporary data.
+Exception handling → Catch runtime errors.
+Procedures & Functions → Reusable modules.
+Triggers → Automatic execution on table events.
+Packages → Group related procedures, functions, and variables.
+
+🔹 PL/SQL Block Structure
+
+
+DECLARE
+    "declare variables here"
+    v_name VARCHAR2(50);
+BEGIN
+    "executable statements"
+    v_name := 'Amit';
+    DBMS_OUTPUT.PUT_LINE('Student Name: ' || v_name);
+EXCEPTION
+    "handle exceptions here"
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error occurred!');
+END;
+
+
+🔹 Key Points
+PL/SQL is block-structured: DECLARE → BEGIN → EXCEPTION → END.
+Supports SQL statements inside procedural code.
+Enables error handling and modular programming.
+Can create stored procedures, functions, triggers, and packages.
+Output is usually printed using DBMS_OUTPUT.PUT_LINE.
+
+
+🔹 PL/SQL Data Type
+PL/SQL Data Types → Specifies the type of data a variable can store in PL/SQL.
+Similar to SQL but includes procedural types for variables, constants, and records.
+
+🔹 Categories of PL/SQL Data Types
+Scalar Data Types → Store single values.
+    NUMBER → numeric values (integer, decimal)
+    VARCHAR2(size) → variable-length character strings
+    CHAR(size) → fixed-length character strings
+    BOOLEAN → TRUE, FALSE, NULL
+    DATE → stores date and time
+Composite Data Types → Store multiple values together.
+    RECORD → collection of different fields (like struct)
+    TABLE / VARRAY / Nested Table → collection of elements
+Reference Data Types → Store pointers or references.
+    REF CURSOR → pointer to query result set
+LOB Data Types → Store large objects.
+    BLOB → Binary Large Object
+    CLOB → Character Large Object
+    NCLOB → National Character LOB
+
+🔹 1. %TYPE Attribute
+Definition:
+%TYPE allows you to declare a variable with the same data type as a column in a table.
+Automatically inherits the column’s type and size, so you don’t have to hardcode it.
+
+🔹 2. %ROWTYPE Attribute
+Definition:
+%ROWTYPE allows you to declare a variable that can hold an entire row of a table or cursor.
+Automatically inherits all columns and their data types.
+
+🔹 Control Structures
+ → Allow you to control the flow of execution in PL/SQL programs, similar to other programming languages.
+They include:
+Conditional Statements → Make decisions (IF…THEN…ELSE).
+Loops → Repeat statements (LOOP, WHILE, FOR).
+Sequential Control → Exit loops early (EXIT) or skip iterations.
+
+🔹 CASE statement
+CASE statement → Conditional expression that returns a value based on conditions, similar to IF-ELSE but more compact.
+Can be used inside SELECT or PL/SQL blocks.
+Two types:
+Simple CASE → Compare expression to values.
+Searched CASE → Evaluate multiple Boolean conditions.
+
+🔹Stored Procedure
+ → A named PL/SQL block stored in the database that can be executed multiple times.
+Improves reusability and performance.
+Can accept parameters (IN, OUT, IN OUT).
+Can include SQL statements, loops, conditions, and exception handling.
+Stored procedures are precompiled PL/SQL blocks.
+Can accept parameters:
+IN → input value
+OUT → output value
+IN OUT → both input and output
+Can include SQL statements, loops, conditionals, and exception handling.
+Improves code reusability, modularity, and performance.
+
+🔹PL/SQL Function
+ → A named PL/SQL block that performs a task and returns a single value.
+Unlike procedures, functions must return a value.
+Can accept parameters (IN only).
+Can be used in SQL statements or PL/SQL blocks.
+Functions must return a value using RETURN.
+Can accept IN parameters only (no OUT).
+Can be called from SQL queries or PL/SQL blocks.
+Useful for calculations, formatting, and reusable logic.
+
+
+
+🔹Cursor
+Cursor → A pointer that holds the result set of a query and allows row-by-row processing in PL/SQL.
+Implicit cursors → automatically created for simple queries (e.g., SELECT INTO).
+Explicit cursors → declared by the programmer for multi-row queries.
+Cursors allow processing multi-row query results row by row.
+%NOTFOUND → returns TRUE when no more rows are left.
+%ROWCOUNT → number of rows fethed so far.
+Always OPEN → FETCH → CLOSE for explicit cursors.
+Implicit cursors are simpler for single-row queries.
+
+
+🔹 Triggers in PL/SQL
+Definition:
+A trigger is a stored PL/SQL block that automatically executes in response to events on a table or view.
+
+🔹 Types of Triggers
+Before Trigger → Executes before an INSERT, UPDATE, or DELETE operation.
+After Trigger → Executes after an INSERT, UPDATE, or DELETE operation.
+Instead Of Trigger → Used on views to perform DML operations.
+Row-Level Trigger → Executes once for each affected row.
+Statement-Level Trigger → Executes once per SQL statement, regardless of affected rows.
+
+✅ Explanation
+
+Before Insert Trigger → modifies data before it’s inserted.
+After Insert Trigger → executes after row insertion.
+Before Update Trigger → validates data before updating.
+Statement-Level Trigger → executes once per SQL statement, not per row.
+Instead Of Trigger → allows DML operations on a view.
+
+
+🔹 Exception Handling
+Exception Handling → Mechanism to catch and handle runtime errors in PL/SQL programs.
+Helps prevent program termination due to errors.
+Errors can be predefined (system exceptions) or user-defined.
+🔹 Types of Exceptions
+Predefined Exceptions → Automatically raised by Oracle (e.g., NO_DATA_FOUND, TOO_MANY_ROWS, ZERO_DIVIDE).
+User-Defined Exceptions → Declared by programmer using EXCEPTION.
+Named Exceptions → Explicitly declared and raised using RAISE.
+Others → Caught using WHEN OTHERS clause.
+
+
+🔹 Assertion
+Assertion → A condition that must always be true at a particular point in a PL/SQL program.
+If the assertion fails, PL/SQL raises an exception.
+Helps validate data or logic in the program.
+🔹 Types of Assertions
+Compile-time assertions → Checked before program execution.
+Run-time assertions → Checked during program execution using conditions and exceptions.
+Note: PL/SQL does not have a built-in ASSERT keyword like some other languages, but assertions can be implemented using IF conditions + RAISE_APPLICATION_ERROR.
+✅ Explanation
+Assertion check → IF v_age < 0 THEN ...
+Raise exception → RAISE_APPLICATION_ERROR to indicate failure.
+Exception handling → WHEN OTHERS catches and prints the error.
+This approach simulates assertions in PL/SQL.
+
+🔹Privileges
+ → Rights given to a user to perform specific actions on database objects.
+Examples: SELECT, INSERT, UPDATE, DELETE, EXECUTE.
+Roles → A collection of privileges that can be granted to users to simplify privilege management.
+🔹 Types of Privileges
+    1. System Privileges
+    Allow a user to perform specific operations on the database itself.
+    Examples: CREATE TABLE, CREATE VIEW, CREATE USER, DROP USER.
+    2. Object Privileges
+    Allow a user to perform actions on specific database objects.
+    Examples: SELECT, INSERT, UPDATE, DELETE on a table or view.
+    3. Roles
+    Group of system and object privileges.
+    Can be granted to multiple users at once.

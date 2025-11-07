@@ -1,0 +1,20 @@
+Database
+    collection of data stored in format that can be easily accessed
+    DBMS : software application used to manage our database
+
+SQL
+    Structered Query Language
+    used to interact with relational databases
+    used to perform CRUD operations
+    not a case sensitive language
+
+Database Structure
+    -> tables
+        -> data
+    All tables contain interrelated data, data is stored in table format
+    theere are many tables in one database
+    -> columns : structure schema, design
+    -> rows : individual data
+
+
+
