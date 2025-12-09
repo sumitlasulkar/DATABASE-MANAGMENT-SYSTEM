@@ -1,0 +1,108 @@
+/***************************************************************
+ *                 MONGODB REPLICATION (DEFINITION)
+ ***************************************************************
+ Replication = Process of copying the same data across multiple servers.
+ Replica Set contains:
+ - Primary (read + write)
+ - Secondary (read + backup)
+ - Arbiter (only votes, no data)
+ Purpose: High availability, fault tolerance, automatic failover.
+***************************************************************/
+
+/**********************
+ * REPLICATION COMMANDS
+ **********************/
+
+// Initialize replica set
+rs.initiate();
+
+// Check replica set status
+rs.status();
+
+// Add secondary node
+rs.add("server2:27017");
+
+// Add another secondary node
+rs.add("server3:27017");
+
+// Step down primary (for testing failover)
+rs.stepDown();
+
+
+/***************************************************************
+ *                    MONGODB SHARDING (DEFINITION)
+ ***************************************************************
+ Sharding = Horizontal partitioning of data across multiple servers.
+ Used for: Big databases, high read/write load, distributed storage.
+
+ Sharding Components:
+ - Shard: Actual data node (usually a replica set)
+ - Config Server: Stores metadata (minimum 3)
+ - Mongos Router: Routes client queries to correct shard
+
+ Sharding Key: Field used to distribute data across shards.
+***************************************************************/
+
+/**********************
+ * SHARDING COMMANDS
+ **********************/
+
+// Enable sharding for database
+sh.enableSharding("mydb");
+
+// Shard a collection using a shard key
+sh.shardCollection("mydb.users", { userId: 1 });
+
+// Check sharding status
+sh.status();
+
+// Add a new shard to cluster
+sh.addShard("replicaSetName/server1:27017,server2:27017,server3:27017");
+
+// Balancing status
+sh.isBalancerRunning();
+
+// Start balancer
+sh.startBalancer();
+
+// Stop balancer
+sh.stopBalancer();
+
+
+/***************************************************************
+ * RANGE, HASH, AND ZONE SHARDING (DEFINITIONS)
+ ***************************************************************
+ Range Sharding:
+   - Data is divided by ranges
+   - Example: 1–1000 → Shard1, 1001–2000 → Shard2
+
+ Hash Sharding:
+   - Uses hash values of shard key to distribute data evenly
+
+ Zone Sharding:
+   - Stores specific documents in specific zones (e.g., region-based)
+***************************************************************/
+
+/**********************
+ * EXAMPLES OF SHARDING KEY TYPES
+ **********************/
+
+// Range sharding example
+sh.shardCollection("mydb.orders", { orderId: 1 });
+
+// Hash sharding example
+sh.shardCollection("mydb.sessions", { sessionId: "hashed" });
+
+// Zone sharding example (assign zone)
+sh.addShardToZone("shard0001", "EAST_ZONE");
+sh.updateZoneKeyRange(
+    "mydb.users",
+    { region: "EAST" },
+    { region: "EAST" },
+    "EAST_ZONE"
+);
+
+
+/***************************************************************
+ * END OF FILE
+ ***************************************************************/
