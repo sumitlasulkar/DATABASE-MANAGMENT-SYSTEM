@@ -1,91 +1,121 @@
-// CRUD operations
+/* 
+=========================================
+        MONGODB CRUD OPERATIONS
+=========================================
+*/
 
-// Create operation
-// to insert document in database
+// ---------------------------
+// 1. CREATE (INSERT)
+// ---------------------------
 
-// single document
-db.inventory.insertOne(
-    {item: "canvas",qty: 100, tags: ["cotton"], size: { h:28, w:35.5, uom: "cm"}}
-)
+// Insert one document
+db.students.insertOne({
+    name: "Sumit",
+    age: 19,
+    branch: "Computer Engineering"
+});
 
-// multiple document
-db.inventory.insertMany(
-    [
-        {item: "canvas",qty: 100, tags: ["cotton"], size: { h:28, w:35.5, uom: "cm"}, status: ["p"]},
-        {item: "canvas",qty: 100, tags: ["cotton"], size: { h:28, w:35.5, uom: "cm"}, status: ["p"]},
-        {item: "canvas",qty: 100, tags: ["cotton"], size: { h:28, w:35.5, uom: "cm"}, status: ["p"]},
-        {item: "canvas",qty: 100, tags: ["cotton"], size: { h:28, w:35.5, uom: "cm"}, status: ["p"]},
-        {item: "canvas",qty: 100, tags: ["cotton"], size: { h:28, w:35.5, uom: "cm"}, status: ["p"]}
-    ]
-)
-
-
-// Read operation
-// to access file present in database
-
-// to fetch all documents
-db.inventory.find()
-db.inventory.find({})
-
-// to fetch selective elements
-// ex. fetch elements with qty 90
-db.inventory.find({qty:90})
-db.inventory.find({tags:{$in:["cotton","D"]}})
-// opertors in Read operation
-// AND - both condition should true then only data fetches or document
-db.inventory.find({tags:"cotton", qty: {$lt: 100}})
-// OR - one condition true then fetch data or document
-db.inventory.find({$or: [{tags:"cotton"}, {qty: { $lt: 100 }}]})
-// to directly fetch one single document not an array of entire documents
-db.inventory.findOne({tags:{$in:["cotton","D"]}})
+// Insert many documents
+db.students.insertMany([
+    { name: "Rahul", age: 20, branch: "IT" },
+    { name: "Amit", age: 21, branch: "CS" },
+    { name: "Sneha", age: 22, branch: "ENTC" }
+]);
 
 
-// Update operation
-// to update an document presen in database
+// ---------------------------
+// 2. READ (FIND)
+// ---------------------------
 
-// to update one document
-db.inventory.updateOne(
-    {item: "canvas"},
-    {
-        $set: {"size.uom": "cm", status: "p"},
-        $currentDate: {lastModified: true}
-    }
-)
+// Find all documents
+db.students.find();
 
-// to update many documents
-db.inventory.updateMany(
-    {item: "canvas"},
-    {
-        $set: {"size.uom": "cm", status: "p"},
-        $currentDate: {lastModified: true}
-    }
-)
+// Find with condition
+db.students.find({ age: 20 });
 
-// to replace one document
-db.inventory.repalceOne(
-    {item: "canvas"},
-    {
-        $set: {"size.uom": "cm", status: "p"},
-        $currentDate: {lastModified: true}
-    }
-) 
+// Find one document
+db.students.findOne({ name: "Sumit" });
 
-// to replace many documents
-db.inventory.replaceMany(
-    {item: "canvas"},
-    {
-        $set: {"size.uom": "cm", status: "p"},
-        $currentDate: {lastModified: true}
-    }
-)
+// Projection (show selected fields)
+db.students.find(
+    { age: 20 },
+    { name: 1, branch: 1, _id: 0 }
+);
+
+// Find using operators
+db.students.find({ age: { $gt: 18 } });   // greater than
+db.students.find({ age: { $lt: 25 } });   // less than
+db.students.find({ age: { $in: [19, 21] } });
 
 
-// Delete opertion
-// use to delete documents in database
+// ---------------------------
+// 3. UPDATE
+// ---------------------------
 
-// delete single element
-db.inventory.deleteOne({status: "p"})
-// delete all elements
-db.inventory.deleteMany({})
-db.inventory.deleteMany({status: "p"})
+// Update one document
+db.students.updateOne(
+    { name: "Sumit" },
+    { $set: { age: 20 } }
+);
 
+// Update many documents
+db.students.updateMany(
+    { branch: "CS" },
+    { $set: { branch: "Computer Science" } }
+);
+
+// Increment field
+db.students.updateOne(
+    { name: "Rahul" },
+    { $inc: { age: 1 } }
+);
+
+// Rename field
+db.students.updateMany(
+    {},
+    { $rename: { branch: "department" } }
+);
+
+// Remove a field
+db.students.updateOne(
+    { name: "Amit" },
+    { $unset: { department: "" } }
+);
+
+
+// ---------------------------
+// 4. DELETE
+// ---------------------------
+
+// Delete one document
+db.students.deleteOne({ name: "Sumit" });
+
+// Delete many documents
+db.students.deleteMany({ age: { $lt: 20 } });
+
+
+// ---------------------------
+// 5. REPLACE DOCUMENT
+// ---------------------------
+
+db.students.replaceOne(
+    { name: "Rahul" },
+    { name: "Rahul", age: 23, department: "AI" }
+);
+
+
+// ---------------------------
+// 6. DROP COLLECTION & DATABASE
+// ---------------------------
+
+// Drop entire collection
+db.students.drop();
+
+// Drop entire database
+db.dropDatabase();
+
+/* 
+=========================================
+       END OF MONGODB CRUD FILE
+=========================================
+*/
